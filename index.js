@@ -18,6 +18,12 @@ const server = http.createServer((req, res) => {
             path += 'contact.html'
             res.statusCode = 200;
             break
+
+        case '/contact-me':
+            res.statusCode = 301;
+            res.setHeader('location', '/contact')
+            res.end()
+            break
         default:
             path += '404.html'
             res.statusCode = 400
