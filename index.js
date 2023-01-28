@@ -12,12 +12,15 @@ const server = http.createServer((req, res) => {
     switch(url) {
         case '/':
             path += 'index.html'
+            res.statusCode = 200;
             break;
         case '/contact':
             path += 'contact.html'
+            res.statusCode = 200;
             break
         default:
             path += '404.html'
+            res.statusCode = 400
     }
 
     res.setHeader('content-type', 'text/html');
