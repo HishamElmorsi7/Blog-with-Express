@@ -2,7 +2,8 @@
 const http = require('http');
 // requiring fs to read the html files
 const fs = require('fs')
-
+// requiring a lodash module that was installed by npm
+const _ = require('lodash')
 
 const server = http.createServer((req, res) => {
 
