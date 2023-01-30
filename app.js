@@ -7,7 +7,24 @@ app.set('view engine', 'ejs')
 app.listen(3000)
 
 app.get('/', (req, res) => {
-    res.render('index', {title: 'Home'})
+    posts = [
+        {
+            title: "10 Tips for Planning the Perfect Road Trip",
+            snippet: "From choosing the right vehicle to mapping out your route, these tips will help you plan an unforgettable road trip."
+        },
+
+        {
+            title: "5 Easy and Delicious Vegetarian Meal Ideas",
+            snippet: "Eating meat-free doesn't have to be boring. Try out these tasty and simple vegetarian meal ideas."
+        },
+
+        {
+            title: "The Pros and Cons of Working Remotely",
+            snippet: "With more and more companies offering remote work options, it's important to weigh the benefits and drawbacks before making the switch."
+        }
+    ]
+
+    res.render('index', {title: 'Home', posts: posts})
 })
 
 app.get('/about', (req, res) => {
@@ -15,7 +32,7 @@ app.get('/about', (req, res) => {
 })
 
 app.get('/blogs/create', (req, res) => {
-    res.render('create', {title: 'Create blog'})
+    res.render('create', {title: 'Create post'})
 })
 
 
