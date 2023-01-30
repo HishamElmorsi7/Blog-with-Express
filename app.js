@@ -8,15 +8,7 @@ app.set('view engine', 'ejs')
 
 app.listen(3000)
 
-app.use((req, res, next) => {
-    console.log(req.path);
-    console.log(req.hostname);
-    console.log(req.method);
-
-    // here we must call because the express doesn't know what to do now, so here you are telling the express that we finished and
-    // to move to move on
-    next();
-})
+app.use(morgan('dev'))
 
 app.get('/', (req, res) => {
     posts = [
