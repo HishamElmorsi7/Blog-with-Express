@@ -1,14 +1,10 @@
 const express = require('express')
-
 const app = express();
-
-const morgan = require('morgan')
 
 app.set('view engine', 'ejs')
 
 app.listen(3000)
 
-app.use(morgan('dev'))
 
 app.get('/', (req, res) => {
     posts = [
@@ -40,6 +36,10 @@ app.get('/blogs/create', (req, res) => {
 })
 
 
+app.use(express.static('public'));
+
+
 app.use((req, res) => {
     res.status(404).render('404', {title: '404 Not found'})
 })
+

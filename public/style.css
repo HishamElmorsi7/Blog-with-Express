@@ -1,0 +1,57 @@
+
+/* Common styles */
+body {
+font-family: Arial, sans-serif;
+text-align: left;
+margin: 0;
+}
+
+header, footer, main {
+width: 80%;
+margin: 0 auto;
+}
+
+header nav a, footer p {
+display: inline-block;
+padding: 1em;
+}
+
+header nav {
+text-align: right;
+}
+
+main {
+padding: 2em 0;
+}
+
+footer {
+position: absolute;
+bottom: 0;
+width: 100%;
+text-align: center;
+}
+
+
+/* Form styles */
+form {
+width: 50%;
+text-align: left;
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+}
+
+form label, form input[type="submit"] {
+display: block;
+margin: 1em 0;
+}
+
+form label {
+font-weight: bold;
+}
+
+form input[type="text"], form textarea {
+width: 100%;
+padding: .5em;
+font-size: 1em;
+}
