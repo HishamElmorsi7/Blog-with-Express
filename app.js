@@ -1,12 +1,20 @@
 const express = require('express')
+const mongoose = require('mongoose')
+
+
 const app = express();
+
+const dbURI = 'mongodb+srv://hishamelmorsi:3E694N1Tij1oMtbI@cluster0.jqr1430.mongodb.net/myblog?retryWrites=true&w=majority'
+
+mongoose.connect(dbURI)
+    .then( result => app.listen(3000) )
+    .catch( (err) => console.log('Could not connect to DB') )
 
 app.set('view engine', 'ejs')
 
-app.listen(3000)
-
 
 app.use(express.static('public'));
+
 
 
 app.get('/', (req, res) => {
