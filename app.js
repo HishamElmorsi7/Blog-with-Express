@@ -19,29 +19,12 @@ app.set('view engine', 'ejs')
 
 // Using Middlewares
 
-// creating and saving blogs
-const blog = new Blog({
-    title:'third blog',
-    snippet: 'this is a snippet',
-    body: 'That is the body'
-})
+// main
 
-blog.save()
-    .then( result => console.log('saved'))
-    .catch( error => 'the object wasn not saved')
 app.use(express.static('public'));
 
-
-app.get('/blogs', (req, res) => {
-    Blog.find()
-    .then( result => {
-        res.send(result)
-    })
-    .catch (
-        err => {
-            console.log(err)
-        }
-    )
+app.get('/', (req, res) => {
+    res.redirect('/blogs')
 })
 
 
@@ -55,25 +38,16 @@ app.get('/blogs/create', (req, res) => {
     res.render('create', {title: 'Create post'})
 })
 
-app.get('/', (req, res) => {
-    posts = [
-        {
-            title: "10 Tips for Planning the Perfect Road Trip",
-            snippet: "From choosing the right vehicle to mapping out your route, these tips will help you plan an unforgettable road trip."
-        },
+app.get('/blogs', (req, res, next) => {
 
-        {
-            title: "5 Easy and Delicious Vegetarian Meal Ideas",
-            snippet: "Eating meat-free doesn't have to be boring. Try out these tasty and simple vegetarian meal ideas."
-        },
-
-        {
-            title: "The Pros and Cons of Working Remotely",
-            snippet: "With more and more companies offering remote work options, it's important to weigh the benefits and drawbacks before making the switch."
-        }
-    ]
-
-    res.render('index', {title: 'Home', posts: posts})
+    Blog.find()
+        .then( result => {
+            res.render('index', {title: 'All blogs', posts: result})
+        })
+        .catch( error => {
+            console.log('Error')
+        })
+    next()
 })
 
 
