@@ -6,6 +6,9 @@ app.set('view engine', 'ejs')
 app.listen(3000)
 
 
+app.use(express.static('public'));
+
+
 app.get('/', (req, res) => {
     posts = [
         {
@@ -34,9 +37,6 @@ app.get('/about', (req, res) => {
 app.get('/blogs/create', (req, res) => {
     res.render('create', {title: 'Create post'})
 })
-
-
-app.use(express.static('public'));
 
 
 app.use((req, res) => {
