@@ -27,6 +27,12 @@
         .then( res => res.json())
         .then( data =>  window.location.href  = data.redirect)
         .catch( error => console.log(error))
+        // let's explain what happened above at first we invoked fetch method which returns a promise and then 
+        // we used then that will be called by adding to the onfull property when the api finishes the
+        // status will be resolved and then the method will be called on the stack passing the value we got which
+        // is a response object the same thing happens when calling the response.json which return a promise to 
+        // return the data by that will be called on the callback function attached using the second then
+        // HishamElmorsi
     })
 </script>
 </html>
