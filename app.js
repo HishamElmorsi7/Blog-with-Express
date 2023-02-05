@@ -35,8 +35,18 @@ app.get('/about', (req, res) => {
 
 // blogs
 
+
 app.get('/blogs/create', (req, res) => {
-    res.render('create', {title: 'Create post'})
+    res.render('create', {title: 'Create blog'})
+})
+
+app.get('/blogs/:id', (req, res) => {
+    const id = req.params.id
+
+    Blog.findById(id)
+        .then((blog) => {
+            res.render('details', {title: 'Blog details', blog})
+        })
 })
 
 app.post('/blogs', (req, res) => {
@@ -50,7 +60,7 @@ app.get('/blogs', (req, res) => {
 
     Blog.find()
         .then( result => {
-            res.render('index', {title: 'All blogs', posts: result})
+            res.render('index', {title: 'All blogs', blogs: result})
         })
         .catch( error => {
             console.log('Error')

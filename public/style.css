@@ -1,5 +1,8 @@
 
 /* Common styles */
+
+
+  
 body {
 font-family: Arial, sans-serif;
 text-align: left;
@@ -54,4 +57,20 @@ form input[type="text"], form textarea {
 width: 100%;
 padding: .5em;
 font-size: 1em;
+}
+
+
+/* Blog details */
+h1 {
+font-size: 36px;
+font-weight: bold;
+text-align: center;
+}
+    
+.blog-body {
+font-size: 18px;
+line-height: 1.5;
+padding: 20px;
+max-width: 720px;
+margin: 0 auto;
 }
