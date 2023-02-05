@@ -11,17 +11,18 @@ const dbURI = 'mongodb+srv://hishamelmorsi:3E694N1Tij1oMtbI@cluster0.jqr1430.mon
 
 mongoose.connect(dbURI)
     .then( result => app.listen(3000) )
-    .catch( (err) => console.log('Could not connect to DB') )
+    .catch( err => console.log(err) )
 
 //Setting the view engine 
 app.set('view engine', 'ejs')
 
 
 // Using Middlewares
+app.use(express.static('public'));
+app.use(express.urlencoded());
 
 // main
 
-app.use(express.static('public'));
 
 app.get('/', (req, res) => {
     res.redirect('/blogs')
@@ -38,7 +39,14 @@ app.get('/blogs/create', (req, res) => {
     res.render('create', {title: 'Create post'})
 })
 
-app.get('/blogs', (req, res, next) => {
+app.post('/blogs', (req, res) => {
+    const blog = new Blog(req.body);
+    blog.save()
+    res.redirect('/blogs')
+})
+
+
+app.get('/blogs', (req, res) => {
 
     Blog.find()
         .then( result => {
@@ -47,7 +55,6 @@ app.get('/blogs', (req, res, next) => {
         .catch( error => {
             console.log('Error')
         })
-    next()
 })
 
 
