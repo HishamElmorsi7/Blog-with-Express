@@ -49,6 +49,13 @@ app.get('/blogs/:id', (req, res) => {
         })
 })
 
+app.delete('/blogs/:id', (req, res) => {
+    const id = req.params.id;
+    Blog.findByIdAndDelete(id)
+        .then((result)=> res.json({redirect: '/blogs'}))
+        .catch((error) => console.log(error))
+})
+
 app.post('/blogs', (req, res) => {
     const blog = new Blog(req.body);
     blog.save()

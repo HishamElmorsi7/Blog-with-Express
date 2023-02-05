@@ -9,8 +9,24 @@
         <p><%=blog.body%></p>
     </div>
 
+    <button class="delete-button" data-doc=<%=blog._id%>>Delete</button>
+
 
     <%- include('./partials/footer.ejs') %>
 
 </body>
+
+<script>
+    bin = document.querySelector('.delete-button')
+    bin.addEventListener('click', (e)=> {
+        const endpoint = `/blogs/${bin.dataset.doc}`
+
+        fetch(endpoint, {
+            method: 'DELETE'
+        })
+        .then( res => res.json())
+        .then( data =>  window.location.href  = data.redirect)
+        .catch( error => console.log(error))
+    })
+</script>
 </html>
