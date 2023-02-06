@@ -23,7 +23,6 @@ app.use(express.urlencoded());
 
 // main
 
-
 app.get('/', (req, res) => {
     res.redirect('/blogs')
 })
