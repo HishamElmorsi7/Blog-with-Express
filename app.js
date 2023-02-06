@@ -1,6 +1,6 @@
 const express = require('express')
 const mongoose = require('mongoose')
-const Blog = require('./models/blog')
+const blogRoutes = require('./routes/blogRoutes.js')
 
 
 // app
@@ -33,47 +33,8 @@ app.get('/about', (req, res) => {
     res.render('about', {title: 'About'})
 })
 
-// blogs
-
-
-app.get('/blogs/create', (req, res) => {
-    res.render('create', {title: 'Create blog'})
-})
-
-app.get('/blogs/:id', (req, res) => {
-    const id = req.params.id
-
-    Blog.findById(id)
-        .then((blog) => {
-            res.render('details', {title: 'Blog details', blog})
-        })
-})
-
-app.delete('/blogs/:id', (req, res) => {
-    const id = req.params.id;
-    Blog.findByIdAndDelete(id)
-        .then((result)=> res.json({redirect: '/blogs'}))
-        .catch((error) => console.log(error))
-})
-
-app.post('/blogs', (req, res) => {
-    const blog = new Blog(req.body);
-    blog.save()
-    res.redirect('/blogs')
-})
-
-
-app.get('/blogs', (req, res) => {
-
-    Blog.find()
-        .then( result => {
-            res.render('index', {title: 'All blogs', blogs: result})
-        })
-        .catch( error => {
-            console.log('Error')
-        })
-})
-
+// blog
+app.use('/blogs', blogRoutes)
 
 app.use((req, res) => {
     res.status(404).render('404', {title: '404 Not found'})
