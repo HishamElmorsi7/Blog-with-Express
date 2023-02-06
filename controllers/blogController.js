@@ -20,6 +20,9 @@ const blog_details = (req, res) => {
         .then((blog) => {
             res.render('blogViews/details', {title: 'Blog details', blog})
         })
+        .catch(err => {
+            res.status(404).render('404', {title: "404 page"})
+        })
 }
 
 const blog_create_get = (req, res) => {
