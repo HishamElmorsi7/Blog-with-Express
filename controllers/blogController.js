@@ -4,7 +4,7 @@ const blog_index = (req, res) => {
 
     Blog.find()
         .then( result => {
-            res.render('index', {title: 'All blogs', blogs: result})
+            res.render('blogViews/index', {title: 'All blogs', blogs: result})
         })
         .catch( error => {
             console.log('Error')
@@ -18,12 +18,12 @@ const blog_details = (req, res) => {
 
     Blog.findById(id)
         .then((blog) => {
-            res.render('details', {title: 'Blog details', blog})
+            res.render('blogViews/details', {title: 'Blog details', blog})
         })
 }
 
 const blog_create_get = (req, res) => {
-    res.render('create', {title: 'Create blog'})
+    res.render('blogViews/create', {title: 'Create blog'})
 }
 
 const blog_create_post = (req, res) => {

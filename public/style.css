@@ -37,12 +37,14 @@ text-align: center;
 
 /* Form styles */
 form {
-width: 50%;
-text-align: left;
-display: flex;
-flex-direction: column;
-align-items: flex-start;
-}
+  width: 50%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2em auto;
+  }
+  
 
 form label, form input[type="submit"] {
 display: block;
@@ -58,6 +60,32 @@ width: 100%;
 padding: .5em;
 font-size: 1em;
 }
+
+form textarea {
+width: 100%;
+padding: .5em;
+font-size: 1em;
+height: 10em; /* add this line */
+}
+
+form input[type="submit"] {
+display: block;
+margin: 1em 0;
+width: 20%;
+padding: .5em;
+font-size: 1em;
+background-color: green;
+color: white;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+}
+
+form input[type="submit"]:hover {
+background-color: darkgreen;
+}
+  
+  
 
 
 /* Blog details */
